@@ -1,0 +1,522 @@
+{
+  "2023Q3": [
+    {
+      "sender": "Plchld",
+      "receiver": "Plchld",
+      "value": "1.0",
+      "label": "Date: 2023-09-30<br>Receipt: DAO Wallet<br>Token Amount: 1.0 Plchld <br>USD Amount: 1.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Plchld",
+      "receiver": "Plchld",
+      "value": "0.0",
+      "label": "Date: 2023-09-30<br>Receipt: Ecosystem<br>Token Amount: 0.0 Plchld <br>USD Amount: 0.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Plchld",
+      "receiver": "Plchld",
+      "value": "0.0",
+      "label": "Date: 2023-09-30<br>Receipt: Metagov<br>Token Amount: 0.0 Plchld <br>USD Amount: 0.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Plchld",
+      "receiver": "Plchld",
+      "value": "0.0",
+      "label": "Date: 2023-09-30<br>Receipt: Public Goods<br>Token Amount: 0.0 Plchld <br>USD Amount: 0.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Plchld",
+      "receiver": "Plchld",
+      "value": "0.0",
+      "label": "Date: 2023-09-30<br>Receipt: Community WG<br>Token Amount: 0.0 Plchld <br>USD Amount: 0.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Plchld",
+      "receiver": "Plchld",
+      "value": "0.0",
+      "label": "Date: 2023-09-30<br>Receipt: Providers<br>Token Amount: 0.0 Plchld <br>USD Amount: 0.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "New Registrar",
+      "receiver": "DAO Wallet",
+      "value": 47811.186798896175,
+      "label": "Date: 2023-08-27<br>Receipt: 0x5e67add44374f2b7360e6351ace9843b0a1ce1b81cb43cef0060eca9691063fc<br>Token Amount: 2884.3621379642964 ETH <br>USD Amount: 4781118.6798896175",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "New Registrar",
+      "receiver": "DAO Wallet",
+      "value": 2076.015741131144,
+      "label": "Date: 2023-09-08<br>Receipt: 0x3d725821db46a57cff2a33952fb3ba4ddb2ad1e034a49cb403db035fbc0d7ca8<br>Token Amount: 126.88574508939656 ETH <br>USD Amount: 207601.5741131144",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "New Registrar",
+      "receiver": "DAO Wallet",
+      "value": 1381.4696541001833,
+      "label": "Date: 2023-09-01<br>Receipt: 0x989b81b29ac7c974cf933e830fae84ddc1d913901d418e10a271022bdc8466a3<br>Token Amount: 84.83080467302324 ETH <br>USD Amount: 138146.96541001834",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "New Registrar",
+      "receiver": "DAO Wallet",
+      "value": 241.91568272733548,
+      "label": "Date: 2023-09-01<br>Receipt: 0xb4e89d7769398ae5c83bd824320ad84c399ac80b124c62654dab131f70c0f37d<br>Token Amount: 14.855123286910375 ETH <br>USD Amount: 24191.568272733548",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "DAO Wallet",
+      "receiver": "ENS Labs",
+      "value": "770817.107952",
+      "label": "Date: 2023-07-04<br>Receipt: 0xaabbb846b0032ba66819d83c2c19b8e8b4e1e81b13704c8701819be9355acb3a<br>Token Amount: 770817.107952 USDC <br>USD Amount: 770817.107952",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "DAO Wallet",
+      "receiver": "ENS Labs",
+      "value": "436045.346448",
+      "label": "Date: 2023-09-07<br>Receipt: 0xca8ea1b02f8a53920547600c626866260986c1dfbf42b817c62b37d66c01ffbc<br>Token Amount: 436045.346448 USDC <br>USD Amount: 436045.346448",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "DAO Wallet",
+      "receiver": "ENS Labs",
+      "value": "310862.915448",
+      "label": "Date: 2023-07-31<br>Receipt: 0x84ffcd258ec9145296803c2b56aacfd71298760db5d4a39d55da062caff12073<br>Token Amount: 310862.915448 USDC <br>USD Amount: 310862.915448",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Ecosystem",
+      "receiver": "Unspent_Ecosystem",
+      "value": "528605.38",
+      "label": "Date: 2023-09-30<br>Receipt: Unspent<br>Token Amount: 33186.0 ENS <br>USD Amount: 528605.38",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Ecosystem",
+      "receiver": "Unspent_Ecosystem",
+      "value": "278951.39721936645",
+      "label": "Date: 2023-09-30<br>Receipt: Unspent<br>Token Amount: 157.10042668762497 ETH <br>USD Amount: 278951.39721936645",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Ecosystem",
+      "receiver": "Unspent_Ecosystem",
+      "value": "218307.39253299963",
+      "label": "Date: 2023-09-30<br>Receipt: Unspent<br>Token Amount: 214771.52373300027 USDC <br>USD Amount: 218307.39253299963",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Ecosystem",
+      "receiver": "Eco. Grants",
+      "value": "50000.0",
+      "label": "Date: 2023-08-24<br>Receipt: 0xd87a95603774f753e1bb31d8b8c4937588f281d946b42fc35ab74c9be394435c<br>Token Amount: 50000.0 USDC <br>USD Amount: 50000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Ecosystem",
+      "receiver": "Eco. Grants",
+      "value": "41512.25",
+      "label": "Date: 2023-08-24<br>Receipt: 0xd87a95603774f753e1bb31d8b8c4937588f281d946b42fc35ab74c9be394435c<br>Token Amount: 25.0 ETH <br>USD Amount: 41512.25",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Ecosystem",
+      "receiver": "Prop House",
+      "value": "24965.6984292034",
+      "label": "Date: 2023-09-17<br>Receipt: 0xdf3e588d1b1b97ca42fd89825b36f7ea4dd0e32002ff935cb75e1d8a29b0dfb8<br>Token Amount: 15.38187031237502 ETH <br>USD Amount: 24965.6984292034",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Ecosystem",
+      "receiver": "Newsletter",
+      "value": "18000.0",
+      "label": "Date: 2023-07-26<br>Receipt: 0x9b12515a8c62202515fce8a488a3186fe3f249eb0f4a3f28f4bae6ace7d36b1e<br>Token Amount: 18000.0 USDC <br>USD Amount: 18000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Ecosystem",
+      "receiver": "ENS Fairy",
+      "value": "16604.9",
+      "label": "Date: 2023-08-24<br>Receipt: 0x3296d57610af4805ed5e25e8112d48ae47933049490348d3ee8d7cdadffeed65<br>Token Amount: 10.0 ETH <br>USD Amount: 16604.9",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Ecosystem",
+      "receiver": "Eco. Grants",
+      "value": "10000.0",
+      "label": "Date: 2023-09-08<br>Receipt: 0xf18ed4af70a40ae782de00a7ed48f6d967bf87d8d32ba35a826784db7b684ab8<br>Token Amount: 10000.0 USDC <br>USD Amount: 10000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Ecosystem",
+      "receiver": "ENS Fairy",
+      "value": "1635.73",
+      "label": "Date: 2023-09-03<br>Receipt: 0xe642125cf3f7997b6971b97a98c1fabe7a0d02ad3d155b4269e588c4a7e6afe4<br>Token Amount: 1.0 ETH <br>USD Amount: 1635.73",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Public Goods",
+      "receiver": "Unspent_Public Goods",
+      "value": "2904.18",
+      "label": "Date: 2023-09-30<br>Receipt: Unspent<br>Token Amount: 200.0 ENS <br>USD Amount: 2904.18",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Public Goods",
+      "receiver": "Unspent_Public Goods",
+      "value": "47522.56999999995",
+      "label": "Date: 2023-09-30<br>Receipt: Unspent<br>Token Amount: 25.0 ETH <br>USD Amount: 47522.56999999995",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Public Goods",
+      "receiver": "Unspent_Public Goods",
+      "value": "188131.702634",
+      "label": "Date: 2023-09-30<br>Receipt: Unspent<br>Token Amount: 187342.70630199998 USDC <br>USD Amount: 188131.702634",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Public Goods",
+      "receiver": "PG Large Grants",
+      "value": "50000.0",
+      "label": "Date: 2023-07-10<br>Receipt: 0x2b3143e98186744c1bad9f054b21d84f462f3f86d4ed311c39a0462d04428c34<br>Token Amount: 50000.0 USDC <br>USD Amount: 50000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Public Goods",
+      "receiver": "PG Large Grants",
+      "value": "50000.0",
+      "label": "Date: 2023-07-10<br>Receipt: 0x2b3143e98186744c1bad9f054b21d84f462f3f86d4ed311c39a0462d04428c34<br>Token Amount: 50000.0 USDC <br>USD Amount: 50000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Public Goods",
+      "receiver": "PG Large Grants",
+      "value": "50000.0",
+      "label": "Date: 2023-07-10<br>Receipt: 0x2b3143e98186744c1bad9f054b21d84f462f3f86d4ed311c39a0462d04428c34<br>Token Amount: 50000.0 USDC <br>USD Amount: 50000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Public Goods",
+      "receiver": "PG Large Grants",
+      "value": "50000.0",
+      "label": "Date: 2023-07-10<br>Receipt: 0x2b3143e98186744c1bad9f054b21d84f462f3f86d4ed311c39a0462d04428c34<br>Token Amount: 50000.0 USDC <br>USD Amount: 50000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Public Goods",
+      "receiver": "Discretionary Grants",
+      "value": "10028.3",
+      "label": "Date: 2023-07-13<br>Receipt: 0x5003229ee5091f540310eeb7d1efa81d63ee6d8f9e186f6a063e557a0d271639<br>Token Amount: 5.0 ETH <br>USD Amount: 10028.3",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Public Goods",
+      "receiver": "Discretionary Grants",
+      "value": "10028.3",
+      "label": "Date: 2023-07-13<br>Receipt: 0x5003229ee5091f540310eeb7d1efa81d63ee6d8f9e186f6a063e557a0d271639<br>Token Amount: 5.0 ETH <br>USD Amount: 10028.3",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Public Goods",
+      "receiver": "Discretionary Grants",
+      "value": "10028.3",
+      "label": "Date: 2023-07-13<br>Receipt: 0x5003229ee5091f540310eeb7d1efa81d63ee6d8f9e186f6a063e557a0d271639<br>Token Amount: 5.0 ETH <br>USD Amount: 10028.3",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Unspent_Metagov",
+      "value": "63499.95000000001",
+      "label": "Date: 2023-09-30<br>Receipt: Unspent<br>Token Amount: 1990.0 ENS <br>USD Amount: 63499.95000000001",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Unspent_Metagov",
+      "value": "55761.76006453135",
+      "label": "Date: 2023-09-30<br>Receipt: Unspent<br>Token Amount: 1.1987281674419705 ETH <br>USD Amount: 55761.76006453135",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Unspent_Metagov",
+      "value": "212257.1241860001",
+      "label": "Date: 2023-09-30<br>Receipt: Unspent<br>Token Amount: 211653.09418600006 USDC <br>USD Amount: 212257.1241860001",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "$ENS Vesting",
+      "value": "17026.93",
+      "label": "Date: 2023-07-14<br>Receipt: 0x5726364f03d49b1f7c7bfb6c509298c1c08cb4d32ba848105e300be6c971b7aa<br>Token Amount: 1750.0 ENS <br>USD Amount: 17026.93",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "$ENS Vesting",
+      "value": "14594.51",
+      "label": "Date: 2023-07-14<br>Receipt: 0x5726364f03d49b1f7c7bfb6c509298c1c08cb4d32ba848105e300be6c971b7aa<br>Token Amount: 1500.0 ENS <br>USD Amount: 14594.51",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Delegate Gas Ref.",
+      "value": "10061.6915",
+      "label": "Date: 2023-07-10<br>Receipt: 0x08abae2b6f0f9c6500059cf11a40d869e755119d571357e49682202f631101f1<br>Token Amount: 5.35 ETH <br>USD Amount: 10061.6915",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "$ENS Vesting",
+      "value": "9729.68",
+      "label": "Date: 2023-07-14<br>Receipt: 0x5726364f03d49b1f7c7bfb6c509298c1c08cb4d32ba848105e300be6c971b7aa<br>Token Amount: 1000.0 ENS <br>USD Amount: 9729.68",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "$ENS Vesting",
+      "value": "8270.22",
+      "label": "Date: 2023-07-14<br>Receipt: 0x5726364f03d49b1f7c7bfb6c509298c1c08cb4d32ba848105e300be6c971b7aa<br>Token Amount: 850.0 ENS <br>USD Amount: 8270.22",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "6500.0",
+      "label": "Date: 2023-07-31<br>Receipt: 0xf889a9f9bca5c6f04088119a10f5d3dc0248773a61f6d4b8c02d5695641ba17b<br>Token Amount: 6500.0 USDC <br>USD Amount: 6500.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "6500.0",
+      "label": "Date: 2023-08-31<br>Receipt: 0x8fc200b1ceb63d9cb5c2e5040b0fbe104671e29eb84fec38c4305b1c9679a431<br>Token Amount: 6500.0 USDC <br>USD Amount: 6500.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "6500.0",
+      "label": "Date: 2023-09-30<br>Receipt: 0xa104b4299c8407c8be83dc757a3cdb6c4e3769b26014b7f3f0b45bcd5ecf5ac3<br>Token Amount: 6500.0 USDC <br>USD Amount: 6500.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "5500.0",
+      "label": "Date: 2023-07-31<br>Receipt: 0xf889a9f9bca5c6f04088119a10f5d3dc0248773a61f6d4b8c02d5695641ba17b<br>Token Amount: 5500.0 USDC <br>USD Amount: 5500.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "5500.0",
+      "label": "Date: 2023-08-31<br>Receipt: 0x8fc200b1ceb63d9cb5c2e5040b0fbe104671e29eb84fec38c4305b1c9679a431<br>Token Amount: 5500.0 USDC <br>USD Amount: 5500.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "5500.0",
+      "label": "Date: 2023-09-30<br>Receipt: 0xa104b4299c8407c8be83dc757a3cdb6c4e3769b26014b7f3f0b45bcd5ecf5ac3<br>Token Amount: 5500.0 USDC <br>USD Amount: 5500.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "$ENS Vesting",
+      "value": "4864.84",
+      "label": "Date: 2023-07-14<br>Receipt: 0x5726364f03d49b1f7c7bfb6c509298c1c08cb4d32ba848105e300be6c971b7aa<br>Token Amount: 500.0 ENS <br>USD Amount: 4864.84",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "$ENS Vesting",
+      "value": "4864.84",
+      "label": "Date: 2023-07-14<br>Receipt: 0x5726364f03d49b1f7c7bfb6c509298c1c08cb4d32ba848105e300be6c971b7aa<br>Token Amount: 500.0 ENS <br>USD Amount: 4864.84",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "4300.0",
+      "label": "Date: 2023-07-31<br>Receipt: 0xf889a9f9bca5c6f04088119a10f5d3dc0248773a61f6d4b8c02d5695641ba17b<br>Token Amount: 4300.0 USDC <br>USD Amount: 4300.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "4300.0",
+      "label": "Date: 2023-08-31<br>Receipt: 0x8fc200b1ceb63d9cb5c2e5040b0fbe104671e29eb84fec38c4305b1c9679a431<br>Token Amount: 4300.0 USDC <br>USD Amount: 4300.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "4300.0",
+      "label": "Date: 2023-09-30<br>Receipt: 0xa104b4299c8407c8be83dc757a3cdb6c4e3769b26014b7f3f0b45bcd5ecf5ac3<br>Token Amount: 4300.0 USDC <br>USD Amount: 4300.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "4000.0",
+      "label": "Date: 2023-07-31<br>Receipt: 0xf889a9f9bca5c6f04088119a10f5d3dc0248773a61f6d4b8c02d5695641ba17b<br>Token Amount: 4000.0 USDC <br>USD Amount: 4000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "4000.0",
+      "label": "Date: 2023-08-31<br>Receipt: 0x8fc200b1ceb63d9cb5c2e5040b0fbe104671e29eb84fec38c4305b1c9679a431<br>Token Amount: 4000.0 USDC <br>USD Amount: 4000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "4000.0",
+      "label": "Date: 2023-09-30<br>Receipt: 0xa104b4299c8407c8be83dc757a3cdb6c4e3769b26014b7f3f0b45bcd5ecf5ac3<br>Token Amount: 4000.0 USDC <br>USD Amount: 4000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Delegate Gas Ref.",
+      "value": "3603.3305",
+      "label": "Date: 2023-07-12<br>Receipt: 0x28b31efeb4887d67c501e64099e7e8b8c315063b4c732bb52360ceaabe87518e<br>Token Amount: 1.925 ETH <br>USD Amount: 3603.3305",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "3500.0",
+      "label": "Date: 2023-07-31<br>Receipt: 0xf889a9f9bca5c6f04088119a10f5d3dc0248773a61f6d4b8c02d5695641ba17b<br>Token Amount: 3500.0 USDC <br>USD Amount: 3500.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "3500.0",
+      "label": "Date: 2023-08-31<br>Receipt: 0x8fc200b1ceb63d9cb5c2e5040b0fbe104671e29eb84fec38c4305b1c9679a431<br>Token Amount: 3500.0 USDC <br>USD Amount: 3500.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "3500.0",
+      "label": "Date: 2023-09-30<br>Receipt: 0xa104b4299c8407c8be83dc757a3cdb6c4e3769b26014b7f3f0b45bcd5ecf5ac3<br>Token Amount: 3500.0 USDC <br>USD Amount: 3500.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "3000.0",
+      "label": "Date: 2023-07-31<br>Receipt: 0xf889a9f9bca5c6f04088119a10f5d3dc0248773a61f6d4b8c02d5695641ba17b<br>Token Amount: 3000.0 USDC <br>USD Amount: 3000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "3000.0",
+      "label": "Date: 2023-07-31<br>Receipt: 0xf889a9f9bca5c6f04088119a10f5d3dc0248773a61f6d4b8c02d5695641ba17b<br>Token Amount: 3000.0 USDC <br>USD Amount: 3000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "3000.0",
+      "label": "Date: 2023-08-31<br>Receipt: 0x8fc200b1ceb63d9cb5c2e5040b0fbe104671e29eb84fec38c4305b1c9679a431<br>Token Amount: 3000.0 USDC <br>USD Amount: 3000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "3000.0",
+      "label": "Date: 2023-08-31<br>Receipt: 0x8fc200b1ceb63d9cb5c2e5040b0fbe104671e29eb84fec38c4305b1c9679a431<br>Token Amount: 3000.0 USDC <br>USD Amount: 3000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "3000.0",
+      "label": "Date: 2023-09-30<br>Receipt: 0xa104b4299c8407c8be83dc757a3cdb6c4e3769b26014b7f3f0b45bcd5ecf5ac3<br>Token Amount: 3000.0 USDC <br>USD Amount: 3000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "3000.0",
+      "label": "Date: 2023-09-30<br>Receipt: 0xa104b4299c8407c8be83dc757a3cdb6c4e3769b26014b7f3f0b45bcd5ecf5ac3<br>Token Amount: 3000.0 USDC <br>USD Amount: 3000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Delegate Gas Ref.",
+      "value": "2915.0695",
+      "label": "Date: 2023-07-10<br>Receipt: 0x7a7f4a20f12b88cfeae5bc508329987ea7f25e9e19ec54e94f27ae28e4ae30d1<br>Token Amount: 1.55 ETH <br>USD Amount: 2915.0695",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "2000.0",
+      "label": "Date: 2023-07-31<br>Receipt: 0xf889a9f9bca5c6f04088119a10f5d3dc0248773a61f6d4b8c02d5695641ba17b<br>Token Amount: 2000.0 USDC <br>USD Amount: 2000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "2000.0",
+      "label": "Date: 2023-07-31<br>Receipt: 0xf889a9f9bca5c6f04088119a10f5d3dc0248773a61f6d4b8c02d5695641ba17b<br>Token Amount: 2000.0 USDC <br>USD Amount: 2000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "2000.0",
+      "label": "Date: 2023-08-31<br>Receipt: 0x8fc200b1ceb63d9cb5c2e5040b0fbe104671e29eb84fec38c4305b1c9679a431<br>Token Amount: 2000.0 USDC <br>USD Amount: 2000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "2000.0",
+      "label": "Date: 2023-08-31<br>Receipt: 0x8fc200b1ceb63d9cb5c2e5040b0fbe104671e29eb84fec38c4305b1c9679a431<br>Token Amount: 2000.0 USDC <br>USD Amount: 2000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "2000.0",
+      "label": "Date: 2023-09-30<br>Receipt: 0xa104b4299c8407c8be83dc757a3cdb6c4e3769b26014b7f3f0b45bcd5ecf5ac3<br>Token Amount: 2000.0 USDC <br>USD Amount: 2000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "Salaries",
+      "value": "2000.0",
+      "label": "Date: 2023-09-30<br>Receipt: 0xa104b4299c8407c8be83dc757a3cdb6c4e3769b26014b7f3f0b45bcd5ecf5ac3<br>Token Amount: 2000.0 USDC <br>USD Amount: 2000.0",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "Metagov",
+      "receiver": "$ENS Vesting",
+      "value": "972.97",
+      "label": "Date: 2023-07-14<br>Receipt: 0x5726364f03d49b1f7c7bfb6c509298c1c08cb4d32ba848105e300be6c971b7aa<br>Token Amount: 100.0 ENS <br>USD Amount: 972.97",
+      "quarter": "2023Q3"
+    },
+    {
+      "sender": "DAO Tooling Pod",
+      "receiver": "Metagov",
+      "value": "111451.2",
+      "label": "Date: 2023-07-25<br>Receipt: 0xac7f079a786133fe4e126961a90eea8ceeab68f66ea7758c4814d6efe708266e<br>Token Amount: 60.0 ETH <br>USD Amount: 111451.2",
+      "quarter": "2023Q3"
+    }
+  ]
+}
