@@ -6,15 +6,13 @@ import { Buffer } from 'buffer';
 
 const provider = new ethers.JsonRpcProvider('https://ethereum-rpc.publicnode.com');
 const CACHE_FILE = 'ens_avatar_cache.json';
-const MAX_REQUESTS_PER_RUN = 50;
-
-const namesToIgnore = [
-    'example1.eth',
-    'example2.eth',
-    // Добавьте сюда другие имена, которые нужно игнорировать
-];
+const MAX_REQUESTS_PER_RUN = 1000;
 
 let avatarCache = {};
+
+const namesToIgnore = [
+    'logicbeach.eth',
+];
 
 function loadCache() {
     if (fs.existsSync(CACHE_FILE)) {
@@ -29,14 +27,14 @@ function saveCache() {
 
 async function getENSAvatarInfo(ensName) {
     if (ensName in avatarCache) {
-        console.log(`Использую кэшированный результат для ${ensName}`);
+        console.log(`cache uses for ${ensName}`);
         return avatarCache[ensName];
     }
 
     try {
         const resolver = await provider.getResolver(ensName);
         if (!resolver) {
-            console.log(`Resolver не найден для ${ensName}`);
+            console.log(`resolver not found ${ensName}`);
             avatarCache[ensName] = null;
             saveCache();
             return null;
@@ -50,7 +48,7 @@ async function getENSAvatarInfo(ensName) {
         saveCache();
         return result;
     } catch (error) {
-        console.error(`Ошибка при получении информации об аватаре для ${ensName}:`, error);
+        console.error(`${ensName}:`, error);
         avatarCache[ensName] = null;
         saveCache();
         return null;
@@ -88,13 +86,13 @@ async function downloadAvatar(ensName, avatarInfo) {
         fs.existsSync(`avatars/${ensName}.gif`) ||
         fs.existsSync(`avatars/${ensName}.webp`) ||
         fs.existsSync(`avatars/${ensName}.svg`)) {
-        console.log(`Аватар для ${ensName} уже существует, пропускаем скачивание`);
+        console.log(`already have image ${ensName} `);
         return;
     }
 
     const { textRecord, avatarUrl } = avatarInfo;
-    console.log(`Текстовая запись аватара для ${ensName}: ${textRecord}`);
-    console.log(`URL аватара от getAvatar для ${ensName}: ${avatarUrl}`);
+    console.log(`txt avatar ${ensName}: ${textRecord}`);
+    console.log(`getAvatar ${ensName}: ${avatarUrl}`);
 
     let downloadUrl = avatarUrl;
     let response;
@@ -106,7 +104,7 @@ async function downloadAvatar(ensName, avatarInfo) {
             // Обработка Data URL
             const matches = avatarUrl.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
             if (matches.length !== 3) {
-                throw new Error('Invalid Data URL');
+                throw new Error('invalid Data URL');
             }
             const contentType = matches[1];
             const base64Data = matches[2];
@@ -115,21 +113,21 @@ async function downloadAvatar(ensName, avatarInfo) {
             if (contentType === 'image/svg+xml') {
                 fileExtension = 'svg';
             } else {
-                console.log(`Неподдерживаемый тип данных для Data URL: ${contentType}`);
+                console.log(`invalid format: ${contentType}`);
                 return;
             }
         } else if (textRecord.startsWith('http')) {
             response = await downloadWithTimeout(avatarUrl);
         } else if (textRecord.startsWith('eip155:')) {
             if (!avatarUrl) {
-                console.log(`Пропускаем EIP запись для ${ensName}, так как не удалось получить ссылку через getAvatar`);
+                console.log(`getAvatar URL not found for ${ensName}, passing`);
                 return;
             }
             try {
                 response = await downloadWithTimeout(avatarUrl, 10000); // 10 секунд таймаут
             } catch (error) {
                 if (error.name === 'AbortError') {
-                    console.log(`Таймаут при получении EIP аватара для ${ensName}, пропускаем`);
+                    console.log(`timeout for ${ensName}, passing`);
                     return;
                 }
                 throw error;
@@ -142,7 +140,7 @@ async function downloadAvatar(ensName, avatarInfo) {
                     throw new Error('avatarUrl не доступен');
                 }
             } catch (error) {
-                console.log(`Не удалось скачать с getAvatar URL, пробуем w3s.link`);
+                console.log(`invalid getAvatar URL, trying through w3s.link`);
                 const ipfsData = parseIpfsUrl(textRecord);
                 if (ipfsData) {
                     const w3sUrl = `https://${ipfsData.cid}.ipfs.w3s.link/${ipfsData.path}`;
@@ -151,7 +149,7 @@ async function downloadAvatar(ensName, avatarInfo) {
                 }
             }
         } else {
-            console.log(`Неизвестный формат записи аватара для ${ensName}, пропускаем`);
+            console.log(`unknown format for ${ensName}, passing`);
             return;
         }
 
@@ -170,7 +168,7 @@ async function downloadAvatar(ensName, avatarInfo) {
         if (fileContent) {
             const fileName = `avatars/${ensName}.${fileExtension}`;
             fs.writeFileSync(fileName, fileContent);
-            console.log(`Аватар для ${ensName} успешно сохранен как ${fileName}`);
+            console.log(`avatar for ${ensName} saved in ${fileName}`);
         } else {
             throw new Error('Не удалось получить данные аватара');
         }
@@ -178,6 +176,7 @@ async function downloadAvatar(ensName, avatarInfo) {
         console.error(`Не удалось скачать аватар для ${ensName}:`, error.message);
     }
 }
+
 function readCSV(filePath) {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     return csvParse(fileContent);
@@ -196,19 +195,19 @@ async function main() {
         .map(row => row.To_name)
         .filter(name => name && name.endsWith('.eth') && !namesToIgnore.includes(name)))];
 
-    console.log(`Найдено ${ensNames.length} уникальных ENS имен (исключая игнорируемые)`);
+    console.log(`${ensNames.length} unique ENS names found`);
 
     let processedCount = 0;
     let apiRequestCount = 0;
 
     for (const ensName of ensNames) {
         if (apiRequestCount >= MAX_REQUESTS_PER_RUN) {
-            console.log(`Достигнут лимит API запросов (${MAX_REQUESTS_PER_RUN}). Останавливаем обработку.`);
+            console.log(`max API reqs reached: (${MAX_REQUESTS_PER_RUN})`);
             break;
         }
 
         if (namesToIgnore.includes(ensName)) {
-            console.log(`Пропускаем ${ensName}, так как оно находится в списке игнорируемых`);
+            console.log(`ignored ${ensName}`);
             continue;
         }
 
@@ -220,16 +219,16 @@ async function main() {
         if (avatarInfo) {
             await downloadAvatar(ensName, avatarInfo);
         } else {
-            console.log(`Информация об аватаре не найдена для ${ensName}`);
+            console.log(`not found ${ensName}`);
         }
         processedCount++;
 
         await new Promise(resolve => setTimeout(resolve, 1000));
     }
 
-    console.log(`Обработано ${processedCount} ENS имен`);
-    console.log(`Выполнено ${apiRequestCount} запросов к API`);
-    console.log('Скачивание аватаров завершено');
+    console.log(`${processedCount} processed`);
+    console.log(`${apiRequestCount} API reqs`);
+    console.log('done');
 }
 
 main().catch(console.error);
