@@ -8,15 +8,15 @@ import pytz
 
 scan_url = 'https://api.etherscan.io/api'
 wallets = {
-    'DAO Wallet': '0xFe89cc7aBB2C4183683ab71653C4cdc9B02D44b7',
+    'DAO Wallet': '0xfe89cc7abb2c4183683ab71653c4cdc9b02d44b7',
     'Ecosystem': '0x2686a8919df194aa7673244549e68d42c1685d03',
     'Metagov': '0x91c32893216de3ea0a55abb9851f581d4503d39b',
     'Public Goods': '0xcd42b4c4d102cc22864e3a1341bb0529c17fd87d'
 }
 contracts = {
-    'ens': '0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72',
-    'usdc': '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
-    'weth': '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
+    'ens': '0xc18360217d8f7ab5e7c516566761ea12ce7f9d72',
+    'usdc': '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+    'weth': '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
 }
 
 def fetch_price(ticker):
@@ -115,8 +115,8 @@ def save_internal_transactions(data, wallet_name):
                 tx["from"],
                 tx["to"],
                 "",
-                value if tx["to"] == wallets[wallet_name] else "",
-                "" if tx["to"] == wallets[wallet_name] else value,
+                value if tx["to"] == wallets[wallet_name] else 0,
+                0 if tx["to"] == wallets[wallet_name] else value,
                 "",
                 usdprice,
                 "0",

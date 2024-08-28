@@ -154,7 +154,7 @@ def identify_wallets(df, wallets_dict, txs_dict, folder_name):
     def force_rename_specific_transactions(df):
 
         specific_names = {
-            '0x11bf109a0989c151aea7da5494e641ba215307e83a43480c56af785fe8b6eb5d': 'premm.eth',
+            '0x6629454d3365f2f6717dce07ab79a423c544a842436cba5c9f846227e40424df': 'premm.eth',
             '0xb07500c4d7dcfce1924db68324f103dccd7be6273ad4fabc87dc0e0e8910e5ad': 'premm.eth',
             '0x81b6b744ff95090b9d2727e7d5b6c9301e643a9de8305377011c2c5a4f11084a': 'Providers',
             '0xcdb37683ee78536c1cbc9e190dfa5805ce408e4fa1182235b400fd54f2b36ed9': 'Hackathons SG ',
@@ -168,13 +168,13 @@ def identify_wallets(df, wallets_dict, txs_dict, folder_name):
             '0x9b9c249be04dd433c7e8fbbf5e61e6741b89966d': 'Hackathons SG ',
         }
         specific_senders = {
-            '0x9bf05272c1debfd466109f0dc99f6aac323934ee04b92a8cffb8720ff8bbf0c1': 'Community WG ',
-            '0xf40e1c129ab1d20576a4a6776b16624e0a7d08d492b2433a214127e45584121d': 'Community WG ',
+            '0x9bf05272c1debfd466109f0dc99f6aac323934ee04b92a8cffb8720ff8bbf0c1': 'Community SG ',
+            '0xf40e1c129ab1d20576a4a6776b16624e0a7d08d492b2433a214127e45584121d': 'Community SG ',
             '0x1c59f0b0a7e14f4422afe3aaeed210da036c15c1570a0a1549019f4b62aa983e': 'Community SG',
         }
         specific_senders_cats = {
-            '0x9bf05272c1debfd466109f0dc99f6aac323934ee04b92a8cffb8720ff8bbf0c1': 'Community WG ',
-            '0xf40e1c129ab1d20576a4a6776b16624e0a7d08d492b2433a214127e45584121d': 'Community WG ',
+            '0x9bf05272c1debfd466109f0dc99f6aac323934ee04b92a8cffb8720ff8bbf0c1': 'Community SG ',
+            '0xf40e1c129ab1d20576a4a6776b16624e0a7d08d492b2433a214127e45584121d': 'Community SG ',
         }
 
         for hash_value, to_name in specific_names.items():
@@ -276,7 +276,7 @@ def add_unspent_balances(grouped_df, prices_dict, folder_name):
             unspent_row = {
                 'Quarter': f"{quarter} Unspent",
                 'From_category': folder_name,
-                'To_category': folder_name if folder_name != "Community WG" else "Community SG",
+                'To_category': folder_name if folder_name != "Community WG" else "Dissolution",
                 'Symbol': symbol,
                 'Value': current_unspent_value,              # The balances transferring inside the wallet itself
                 'DOT_USD': unspent_dot_usd                   # Except Community WG, since it was dissolved after one Q
@@ -335,9 +335,9 @@ def calculate_interquarter_balances(df, wallet):
                     'From': wallet,
                     'From_name': wallet,
                     'From_category': wallet,
-                    'To': wallet,
-                    'To_name': 'Community WG ' if wallet == 'Community WG' else wallet,
-                    'To_category': 'Community WG ' if wallet == 'Community WG' else wallet,
+                    'To': 'Dissolution' if wallet == 'Community WG' else wallet,
+                    'To_name': 'Dissolution' if wallet == 'Community WG' else wallet,
+                    'To_category': 'Dissolution' if wallet == 'Community WG' else wallet,
                     'Value': net_balance,
                     'DOT_USD': net_usd,
                     'Symbol': symbol,
@@ -383,8 +383,10 @@ def combine_local_ledgers(local_ledgers_dir, prices_dict, wallets_dict):
     names_to_remove = ['Token Timelock', 'slobo.eth', 'capitulation.eth', 'Disperse.app', 'ETHGlobal', 'ImmuneFi', 'PG Large Grants Pod']
     combined_df = combined_df[~combined_df['From_name'].isin(names_to_remove)]
 
-    hashes_to_remove = ['0x2606d71061f425826f3f8fa40afa0d76ef208cf69e8496f9210b9d59cb3f14fb', '0x2606d71061f425826f3f8fa40afa0d76ef208cf69e8496f9210b9d59cb3f14fb']
-    combined_df = combined_df[~combined_df['Transaction Hash'].isin(hashes_to_remove)]
+    mutual_removes = ['Ecosystem']
+    mutual_removes_2 = ['New Registrar']
+    combined_df = combined_df[~(combined_df['From_name'].isin(mutual_removes) & combined_df['To_name'].isin(mutual_removes_2))]
+    combined_df = combined_df[~(combined_df['To_name'].isin(mutual_removes) & combined_df['From_name'].isin(mutual_removes_2))]
 
     combined_df = combined_df[~((combined_df['Transaction Hash'] != 'Interquarter') & 
                            (combined_df['Transaction Hash'] != 'Stream') & 
@@ -393,6 +395,42 @@ def combine_local_ledgers(local_ledgers_dir, prices_dict, wallets_dict):
     combined_df['Quarter'] = combined_df['Date'].apply(add_quarter)
 
     combined_df = combined_df[combined_df['Quarter'] > '2022Q1']
+
+    invalid_names_ref = combined_df[combined_df['To_category'] == 'Invalid Names Ref.'].copy()
+    if not invalid_names_ref.empty:
+        aggregated = invalid_names_ref.groupby(['Quarter', 'From', 'From_name', 'From_category']).agg({
+            'Date': 'last',
+            'Value': 'sum',
+            'DOT_USD': 'sum'
+        }).reset_index()
+        
+        aggregated['Transaction Hash'] = 'Refund'
+        aggregated['To'] = 'Users'
+        aggregated['To_name'] = 'Invalid Names Ref.'
+        aggregated['To_category'] = 'Invalid Names Ref.'
+        aggregated['Symbol'] = 'USDC'
+        aggregated['Acquainted?'] = 1
+        
+        # Remove original Invalid Names Ref. transactions and add aggregated ones
+        combined_df = combined_df[combined_df['To_category'] != 'Invalid Names Ref.']
+        combined_df = pd.concat([combined_df, aggregated])
+
+    stream_txs = combined_df[combined_df['Transaction Hash'] == 'Stream'].copy()
+    if not stream_txs.empty:
+        stream_txs['Year-Month'] = stream_txs['Date'].dt.to_period('M')
+        aggregated_stream = stream_txs.groupby(['Year-Month', 'To_name', 'From', 'From_name', 'From_category', 
+                                                'To', 'To_category', 'Symbol', 'Quarter']).agg({
+            'Date': 'last',
+            'Value': 'sum',
+            'DOT_USD': 'sum'
+        }).reset_index()
+        
+        aggregated_stream['Transaction Hash'] = 'Stream'
+        aggregated_stream['Acquainted?'] = 1
+        aggregated_stream.drop('Year-Month', axis=1, inplace=True)
+        
+        combined_df = combined_df[combined_df['Transaction Hash'] != 'Stream']
+        combined_df = pd.concat([combined_df, aggregated_stream])
 
     combined_df.reset_index(drop=True, inplace=True)
 
@@ -428,69 +466,79 @@ def combine_local_ledgers(local_ledgers_dir, prices_dict, wallets_dict):
 
     combined_df = add_placeholders_for_all_quarters(combined_df)
 
-    def sort_key(row):
+    def calculate_total_dot_usd(df):
+        return df.groupby(['Quarter', 'From_name', 'To_category'])['DOT_USD'].sum().reset_index()
+
+    def sort_key(row, total_dot_usd_df):
         from_name = row['From_name']
         to_name = row['To_name']
+        to_category = row['To_category']
         dot_usd = row['DOT_USD']
         transaction_hash = row['Transaction Hash']
         quarter = row['Quarter']
         date = row['Date']
         symbol = row['Symbol']
+
+        def get_total_dot_usd(quarter, from_name, to_category):
+            total = total_dot_usd_df[(total_dot_usd_df['Quarter'] == quarter) & 
+                                    (total_dot_usd_df['From_name'] == from_name) & 
+                                    (total_dot_usd_df['To_category'] == to_category)]['DOT_USD'].sum()
+            return -total  # Negative for descending order
         
         wallets_order = ['DAO Wallet', 'Ecosystem', 'Metagov', 'Public Goods', 'Community WG', 'Providers']
         symbol_order = {'ENS': 0, 'ETH': 1, 'USDC': 2}
 
         if from_name == 'Plchld':
-            return (quarter, 0, wallets_order.index(from_name) if from_name in wallets_order else len(wallets_order), date)
+                return (quarter, 0, -dot_usd, date)
         elif transaction_hash == 'Interquarter':
-            symbol_priority = symbol_order.get(symbol, len(symbol_order))
-            if from_name == 'ENS Multisig' or to_name == 'ENS Multisig':
-                return (quarter, 1, symbol_priority, date)
-            elif from_name == 'Root Multisig' or to_name == 'Root Multisig':
-                return (quarter, 4, symbol_priority, date)
-            elif from_name == 'DAO Wallet' or to_name == 'DAO Wallet':
-                return (quarter, 7, symbol_priority, date)
-            elif from_name == 'Ecosystem' or to_name == 'Ecosystem':
-                return (quarter, 10, symbol_priority, date)
-            elif from_name == 'Public Goods' or to_name == 'Public Goods':
-                return (quarter, 13, symbol_priority, date)
-            elif from_name == 'Metagov' or to_name == 'Metagov':
-                return (quarter, 16, symbol_priority, date)
-            elif from_name == 'Community WG' or to_name == 'Community WG':
-                return (quarter, 19, symbol_priority, date)
-            elif from_name == 'Providers' or to_name == 'Providers':
-                return (quarter, 22, symbol_priority, date)
+                symbol_priority = symbol_order.get(symbol, len(symbol_order))
+                if from_name == 'ENS Multisig' or to_name == 'ENS Multisig':
+                    return (quarter, 1, symbol_priority, date)
+                elif from_name == 'Root Multisig' or to_name == 'Root Multisig':
+                    return (quarter, 4, symbol_priority, date)
+                elif from_name == 'DAO Wallet' or to_name == 'DAO Wallet':
+                    return (quarter, 7, symbol_priority, date)
+                elif from_name == 'Ecosystem' or to_name == 'Ecosystem':
+                    return (quarter, 10, symbol_priority, date)
+                elif from_name == 'Public Goods' or to_name == 'Public Goods':
+                    return (quarter, 13, symbol_priority, date)
+                elif from_name == 'Metagov' or to_name == 'Metagov':
+                    return (quarter, 16, symbol_priority, date)
+                elif from_name == 'Community WG' or to_name == 'Community WG':
+                    return (quarter, 19, symbol_priority, date)
+                elif from_name == 'Providers' or to_name == 'Providers':
+                    return (quarter, 22, symbol_priority, date)
         elif to_name == 'ENS Multisig':
-            return (quarter, 2, -dot_usd, date)
+            return (quarter, 2, get_total_dot_usd(quarter, from_name, to_category), date)
         elif from_name == 'ENS Multisig':
-            return (quarter, 3, -dot_usd, date)
+            return (quarter, 3, get_total_dot_usd(quarter, from_name, to_category), date)
         elif to_name == 'Root Multisig':
-            return (quarter, 5, -dot_usd, date)
+            return (quarter, 5, get_total_dot_usd(quarter, from_name, to_category), date)
         elif from_name == 'Root Multisig':
-            return (quarter, 6, -dot_usd, date)
+            return (quarter, 6, get_total_dot_usd(quarter, from_name, to_category), date)
         elif to_name == 'DAO Wallet':
-            return (quarter, 8, -dot_usd, date)
+            return (quarter, 8, get_total_dot_usd(quarter, from_name, to_category), date)
         elif from_name == 'DAO Wallet':
             if to_name in ['Ecosystem', 'Public Goods', 'Metagov', 'Community WG', 'Providers']:
-                return (quarter, 11 + ['Ecosystem', 'Public Goods', 'Metagov', 'Community WG', 'Providers'].index(to_name) * 3, -dot_usd, date)
+                return (quarter, 11 + ['Ecosystem', 'Public Goods', 'Metagov', 'Community WG', 'Providers'].index(to_name) * 3, get_total_dot_usd(quarter, from_name, to_category), date)
             else:
-                return (quarter, 9, -dot_usd, date)
+                return (quarter, 9, get_total_dot_usd(quarter, from_name, to_category), date)
         elif from_name == 'Ecosystem':
-            return (quarter, 12, -dot_usd, date)
+            return (quarter, 12, get_total_dot_usd(quarter, from_name, to_category), date)
         elif from_name == 'Public Goods':
-            return (quarter, 15, -dot_usd, date)
+            return (quarter, 15, get_total_dot_usd(quarter, from_name, to_category), date)
         elif from_name == 'Metagov':
-            return (quarter, 18, -dot_usd, date)
+            return (quarter, 18, get_total_dot_usd(quarter, from_name, to_category), date)
         elif from_name == 'Community WG':
-            return (quarter, 21, -dot_usd, date)
+            return (quarter, 21, get_total_dot_usd(quarter, from_name, to_category), date)
         elif from_name == 'Providers':
-            return (quarter, 24, -dot_usd, date)
+            return (quarter, 24, get_total_dot_usd(quarter, from_name, to_category), date)
 
-        return (quarter, 25, -dot_usd, date)
+        return (quarter, 25, get_total_dot_usd(quarter, from_name, to_category), date)
 
-    combined_df['sort_key'] = combined_df.apply(sort_key, axis=1)
-    combined_df.sort_values(by=['Quarter', 'sort_key'], inplace=True)
-
+    total_dot_usd_df = calculate_total_dot_usd(combined_df)
+    combined_df['sort_key'] = combined_df.apply(lambda row: sort_key(row, total_dot_usd_df), axis=1)
+    combined_df.sort_values(by=['sort_key'], inplace=True)
     combined_df.drop(columns=['sort_key'], inplace=True)
 
     save_dir = os.path.join('public', 'data')
