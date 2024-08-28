@@ -10,10 +10,14 @@
   "author": "danch",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1",
+    "axios": "^1.7.5",
     "d3-dsv": "^3.0.1",
-    "xlsx": "^0.17.5",
-    "node-cron": "3.0.3"
+    "ethers": "^6.13.2",
+    "express": "^4.17.1",
+    "install": "^0.13.0",
+    "node-cron": "3.0.3",
+    "npm": "^10.8.2",
+    "xlsx": "^0.17.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
