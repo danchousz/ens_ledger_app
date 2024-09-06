@@ -12,11 +12,12 @@ Quarter,From_category,To_category,Symbol,Value,DOT_USD
 2022Q3,Metagov,DAO Tooling,USDC,-150000.0,-150041.83
 2022Q3,Metagov,Governance,ENS,-7250.0,-107249.0
 2022Q3,Metagov,DAO Tooling,ENS,-6000.0,-88235.46
-2022Q3,Metagov,Salaries,USDC,-60830.0,-60811.34
+2022Q3,Metagov,Salaries,USDC,-59330.0,-59312.28
 2022Q3,Metagov,Governance,USDC,-48500.0,-48492.38
 2022Q3,Metagov,DAO Tooling,ETH,-10.0,-18463.6
 2022Q3,Metagov,Governance,ETH,-5.0,-8150.0
-2022Q3,Metagov,Salaries,ENS,-250.0,-3201.91
+2022Q3,Metagov,ENS Governance,ENS,-250.0,-3201.91
+2022Q3,Metagov,ENS Governance,USDC,-1500.0,-1499.06
 2022Q3 Unspent,Metagov,Metagov,ENS,4700.0,73884.0
 2022Q3 Unspent,Metagov,Metagov,ETH,10.0,13365.0
 2022Q3 Unspent,Metagov,Metagov,USDC,182670.0,182670.0
@@ -59,7 +60,7 @@ Quarter,From_category,To_category,Symbol,Value,DOT_USD
 2023Q4,DAO Wallet,Metagov,USDC,376000.0,376000.0
 2023Q4,DAO Wallet,Metagov,ETH,157.0,272157.68
 2023Q4,Metagov,$ENS Vesting,ENS,-40000.0,-343600.0
-2023Q4,Metagov,Invalid Names Ref.,ETH,-113.622525757201,-270460.2429608959
+2023Q4,Metagov,Invalid Names Ref.,ETH,-113.622525757201,-270460.2429608958
 2023Q4,Metagov,Salaries,USDC,-122300.0,-122300.0
 2023Q4,Metagov,DAO Tooling,USDC,-105000.0,-105000.0
 2023Q4,Metagov,Audit,USDC,-49000.0,-49000.0
@@ -75,7 +76,7 @@ Quarter,From_category,To_category,Symbol,Value,DOT_USD
 2024Q1,Bug Bounty SG,Metagov,USDC,14000.0,14000.0
 2024Q1,Metagov,Salaries,USDC,-147000.0,-147000.0
 2024Q1,Metagov,Endowment Fees,ETH,-43.54,-125688.01000000001
-2024Q1,Metagov,Ref. Accidental Txs,ENS,-588.866862229215,-15233.985725869794
+2024Q1,Metagov,Ref. Accidental Txs,ENS,-588.866862229215,-15233.985725869796
 2024Q1,Metagov,Bylaws,USDC,-7498.673205,-7498.673205
 2024Q1,Metagov,DAO Tooling,ETH,-2.0,-6999.54
 2024Q1,Metagov,Event,USDC,-6000.0,-6000.0
@@ -95,7 +96,7 @@ Quarter,From_category,To_category,Symbol,Value,DOT_USD
 2024Q3,DAO Wallet,Metagov,ENS,150000.0,3885000.0
 2024Q3,DAO Wallet,Metagov,USDC,374000.0,374000.0
 2024Q3,Metagov,$ENS Vesting,ENS,-90000.0,-2400300.0
-2024Q3,Metagov,Salaries,USDC,-49000.0,-49000.0
+2024Q3,Metagov,Salaries,USDC,-98000.0,-98000.0
 2024Q3 Unspent,Metagov,Metagov,ENS,74951.13313777078,1008842.2520343948
-2024Q3 Unspent,Metagov,Metagov,USDC,471196.327771,471196.327771
+2024Q3 Unspent,Metagov,Metagov,USDC,422196.327771,422196.327771
 2024Q3 Unspent,Metagov,Metagov,ETH,83.68802789684156,283506.58458501427

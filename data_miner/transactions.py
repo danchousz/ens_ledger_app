@@ -100,6 +100,7 @@ various_txs = [
     # Metagov
         # DAO Tooling
         ("DAO Tooling", "0xe3c9e56764fc1564c214e2ef6367eef38429e16a649404ef7cdf33cf332adc2f"), #ENSTooling
+        ("ENS Governance", "0x47d973727a5e8d9e7cacb2a11e26514d0ff74360618b3f40ed15b855a6b11e99"), #Marcus
     # Public Goods
         # Small Grants
         ("PG Small Grants", "0x4571c7d091b6f26285af737fb2eaa979bfe5a18c236266ef45c699e912f248a7"), #Round 2
@@ -278,11 +279,11 @@ various_txs = [
         ("Gitcoin Grants", "0xe448fed2956fa56f5da99b2039eae75864fc34c60a27458e5810ed27fed7e3f3"), #Socket
         ("Gitcoin Grants", "0xb522b0317a9d1a2f46cab01a13608ca92eacfc606dd4433aa29c942f2acc38da"),
         # Support
-        ("Support", "0xec6fd254700621353c0d84724d02a8219df6d0b5ae85589fb252b411c9b7c3eb"), #Marcus
-        ("Support", "0x79170c91ec172e20ae5942549c28eec7eb503ca8c16d30edf92d1b23e4a04599"), #Marcus
-        ("Support", "0xb47d991cd1c32391f8e147efb73c6de6ef5edd3c0f6a187c237e9c89e1d438d8"), #Marcus
-        ("Support", "0x38b3299d1590e2db520502d141dd3593e3525c981d54cc14d389e396c46a6f4b"), #Marcus
-        ("Support", "0x162e566fbef5938c47b9320d43d3c14af16b552d281bb21a8a0474b3c3143fb3"), #Marcus
+        ("SMM", "0xec6fd254700621353c0d84724d02a8219df6d0b5ae85589fb252b411c9b7c3eb"), #Marcus
+        ("SMM", "0x79170c91ec172e20ae5942549c28eec7eb503ca8c16d30edf92d1b23e4a04599"), #Marcus
+        ("SMM", "0xb47d991cd1c32391f8e147efb73c6de6ef5edd3c0f6a187c237e9c89e1d438d8"), #Marcus
+        ("SMM", "0x38b3299d1590e2db520502d141dd3593e3525c981d54cc14d389e396c46a6f4b"), #Marcus
+        ("SMM", "0x162e566fbef5938c47b9320d43d3c14af16b552d281bb21a8a0474b3c3143fb3"), #Marcus
         # Bug bounty
         ("Bug Bounty", "0x1acf5f199f532d7627e76df067a3665924216dfd2aa0bc710c6c725948e6505d"), #Immunefi
         # Bountycaster
@@ -316,8 +317,11 @@ various_txs = [
     #Public Goods
         ("Event", "0xaf185a7378ae071cc0cad6e948d0d231d046496231737c1fad1a31b54c8670cd"),
         ("Translators", "0x7f0e25b68b4a7c9db23be4f7d786951c471f02383e8c7ef1d4ec722375ba0bac"),
+        ("Translators", "0x94848f0d80d559d3fc7d623a87946f1d27b40fe4011ae09b3b69f993ec10974e"),
     #Ecosystem
         ("Hackathons", "0x904e2924c45a41b6974165e1b60c3a24a7b75d181bc38268fc50fe889db8c93a"),
-        ("Support", "0xae5d1ceed7c5cd0ff73a97213f4e5dbe5ac3bd40e431d4526d877e945ff41a37"),
+        ("SMM", "0xae5d1ceed7c5cd0ff73a97213f4e5dbe5ac3bd40e431d4526d877e945ff41a37"),
+        ("Bug Bounty", "0x73a366234fdc93f5983ab4ed14ed3c721aa750f374eb4a7b613d97d49bfe77f8"),
+        ("SMM", "0xa1c94c97b130ff6c229f1e4b3f7d5fd050f658e74280b1635629dd292c5b408e"),
 
 ]

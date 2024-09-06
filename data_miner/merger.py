@@ -195,6 +195,8 @@ def identify_wallets(df, wallets_dict, txs_dict, folder_name):
         return df
 
     df = force_rename_specific_transactions(df)
+
+    df.loc[df['To_name'] == 'Discord Support', 'To_category'] = 'Support'
     
     df = df.reindex(columns=['Transaction Hash', 'Date', 'From', 'From_name','From_category', 'To', 'To_name', 'To_category', 'Value', 'DOT_USD', 'Symbol', 'Acquainted?'])
 
@@ -348,29 +350,43 @@ def calculate_interquarter_balances(df, wallet):
 
 # Function to combine local ledgers, remove duplicates and add interquarter balances
 def combine_local_ledgers(local_ledgers_dir, prices_dict, wallets_dict):
-    all_files = glob(os.path.join(local_ledgers_dir, '*.csv'))
+    all_files = glob(os.path.join(local_ledgers_dir, '*.csv'), recursive=True)
     combined_df = pd.DataFrame()
     unacquainted_df = pd.DataFrame()
 
     for file in all_files:
-        df = pd.read_csv(file)
+        print(f"Processing file: {file}")
+        df = pd.read_csv(file).copy()
         if 'From_category' not in df.columns or 'To_category' not in df.columns:
+            print(f"Skipping file due to missing columns: {file}")
             continue 
         df['Date'] = pd.to_datetime(df['Date'])
         df = df[(df['From_category'] != 'WETH Contract') & (df['To_category'] != 'WETH Contract')].copy()
-        
+
         wallet_name = os.path.splitext(os.path.basename(file))[0]
         interquarter_df = calculate_interquarter_balances(df, wallet_name)
         df = pd.concat([df, interquarter_df])
         combined_df = pd.concat([combined_df, df])
 
-        unacquainted_df = df[
+        temp_unacquainted_df = df[
             ((df['Acquainted?'] == 0) | (df['To_name'] == df['To_category'])) &
-            (~df['To_name'].isin(['Ecosystem', 'Metagov', 'Public Goods', 'DAO Wallet', 'Community WG'
-                                'Airdrop', 'ENS Labs', 'Community SG', 'CoW WETH Proxy', 'Endowment', 
-                                'Providers', 'Community WG ', 'CoW', 'Invalid Names Ref.', 'Gitcoin Multisig',
-                                'Ref. Accidental Txs', 'SIWE', 'Eth.limo', 'ENS Fairy', 'Discord Support', 'UniSwap']))
-        ]
+            (~df['To_name'].isin(['Ecosystem', 'Metagov', 'Public Goods', 'DAO Wallet', 'Community WG',
+                                'Airdrop', 'ENS Labs', 'Community SG', 'CoW WETH Proxy', 'Endowment', 'Dissolution',
+                                'Providers', 'Community WG ', 'CoW', 'Invalid Names Ref.', 'Gitcoin Multisig', 'Discretionary',
+                                'Ref. Accidental Txs', 'SIWE', 'ETHLimo', 'ENS Fairy', 'Discord Support', 'UniSwap', 'New Registrar']))
+        ].copy()
+        unacquainted_df = pd.concat([unacquainted_df, temp_unacquainted_df])
+
+    if not unacquainted_df.empty:
+        save_dir = os.path.join('public', 'data')
+        os.makedirs(save_dir, exist_ok=True)
+        unacquainted_df.to_csv(os.path.join(save_dir, 'unknown_contractors.csv'), index=False)
+        print(f"Saved {len(unacquainted_df)} unknown transactions to unknown_contractors.csv")
+    else:
+        print("No unknown transactions found")
+
+    save_dir = os.path.join('public', 'data')
+    unacquainted_df.to_csv(os.path.join(save_dir, 'unknown_contractors.csv'), index=False)
 
     combined_df['Value'] = combined_df['Value'].abs()
     combined_df['DOT_USD'] = combined_df['DOT_USD'].abs()
@@ -411,7 +427,6 @@ def combine_local_ledgers(local_ledgers_dir, prices_dict, wallets_dict):
         aggregated['Symbol'] = 'USDC'
         aggregated['Acquainted?'] = 1
         
-        # Remove original Invalid Names Ref. transactions and add aggregated ones
         combined_df = combined_df[combined_df['To_category'] != 'Invalid Names Ref.']
         combined_df = pd.concat([combined_df, aggregated])
 
@@ -465,6 +480,54 @@ def combine_local_ledgers(local_ledgers_dir, prices_dict, wallets_dict):
         return result_df
 
     combined_df = add_placeholders_for_all_quarters(combined_df)
+
+    dissolution_records = [
+        {
+            'Transaction Hash': 'Dissolution',
+            'Date': pd.to_datetime('2022-06-30').date(),
+            'From': 'Dissolution',
+            'From_name': 'Dissolution',
+            'From_category': 'Dissolution',
+            'To': '0x9718ba71dc1284842fce66dc3e34dffc6c630074',
+            'To_name': 'Community SG',
+            'To_category': 'Community SG',
+            'Value': 322.0,
+            'DOT_USD': 4362.85,
+            'Symbol': 'ENS',
+            'Acquainted?': 1,
+            'Quarter': '2022Q3'
+        },
+        {
+            'Transaction Hash': 'Dissolution',
+            'Date': pd.to_datetime('2022-06-30').date(),
+            'From': 'Dissolution',
+            'From_name': 'Dissolution',
+            'From_category': 'Dissolution',
+            'To': '0x9718ba71dc1284842fce66dc3e34dffc6c630074',
+            'To_name': 'Community SG',
+            'To_category': 'Community SG',
+            'Value': 0.050000000000000044,
+            'DOT_USD': 725.3040000000001,
+            'Symbol': 'ETH',
+            'Acquainted?': 1,
+            'Quarter': '2022Q3'
+        },
+        {
+            'Transaction Hash': 'Dissolution',
+            'Date': pd.to_datetime('2022-06-30').date(),
+            'From': 'Dissolution',
+            'From_name': 'Dissolution',
+            'From_category': 'Dissolution',
+            'To': '0x9718ba71dc1284842fce66dc3e34dffc6c630074',
+            'To_name': 'Community SG',
+            'To_category': 'Community SG',
+            'Value': 37491.803362000006,
+            'DOT_USD': 38449.75999999998,
+            'Symbol': 'USDC',
+            'Acquainted?': 1,
+            'Quarter': '2022Q3'
+        }
+    ]
 
     def calculate_total_dot_usd(df):
         return df.groupby(['Quarter', 'From_name', 'To_category'])['DOT_USD'].sum().reset_index()
@@ -533,18 +596,22 @@ def combine_local_ledgers(local_ledgers_dir, prices_dict, wallets_dict):
             return (quarter, 21, get_total_dot_usd(quarter, from_name, to_category), date)
         elif from_name == 'Providers':
             return (quarter, 24, get_total_dot_usd(quarter, from_name, to_category), date)
+        elif from_name == 'Dissolution':
+            return (quarter, 26, date)
 
         return (quarter, 25, get_total_dot_usd(quarter, from_name, to_category), date)
+
+    dissolution_df = pd.DataFrame(dissolution_records)
+    combined_df = pd.concat([combined_df, dissolution_df], ignore_index=True)
+
+    combined_df['Date'] = pd.to_datetime(combined_df['Date']).dt.date
 
     total_dot_usd_df = calculate_total_dot_usd(combined_df)
     combined_df['sort_key'] = combined_df.apply(lambda row: sort_key(row, total_dot_usd_df), axis=1)
     combined_df.sort_values(by=['sort_key'], inplace=True)
     combined_df.drop(columns=['sort_key'], inplace=True)
 
-    save_dir = os.path.join('public', 'data')
-
     combined_df.to_csv(os.path.join(save_dir, 'd_ledgers.csv'), index=False)
-    unacquainted_df.to_csv(os.path.join(save_dir, 'unknown_contractors.csv'), index=False)
 
     return combined_df
 
@@ -569,22 +636,29 @@ def finalize_and_sort_df(grouped_with_unspent_df, folder_name):
 
 # Main Function. Specifies the rules for working with directories and libraries as well as the order in which functions are performed.
 def process_directories(ens_wallets, various_txs):
-
-    raw_data_dir = 'data_miner/raw_txs'
-    local_ledgers_dir = 'data_miner/local_ledgers'
+    raw_data_dir = os.path.join('data_miner', 'raw_txs')
+    local_ledgers_dir = os.path.join('data_miner', 'local_ledgers')
     os.makedirs(local_ledgers_dir, exist_ok=True)
-    quarter_dir = 'data_miner/quarterly_ledgers'
+    quarter_dir = os.path.join('data_miner', 'quarterly_ledgers')
     os.makedirs(quarter_dir, exist_ok=True)
 
     wallets_dict = {address: (name, details[0] if len(details) == 1 else name) for name, _, address, *details in ens_wallets}
     txs_dict = {tx[1]: tx[0] for tx in various_txs}
     prices_dict = {pd.to_datetime(date).date(): (ens_price, eth_price) for date, ens_price, eth_price in prices}
 
-    for folder in glob(os.path.join(raw_data_dir, '$*')):
+    for folder in glob(os.path.join(raw_data_dir, '$*'), recursive=True):
         folder_name = os.path.basename(folder).strip('$')
+        print(f"Processing folder: {folder_name}")  # Добавьте эту строку для отладки
 
         token_file = os.path.join(folder, 'token.csv')
         internal_file = os.path.join(folder, 'internal.csv')
+
+        if not os.path.exists(token_file):
+            print(f"Token file not found: {token_file}")
+            continue
+        if not os.path.exists(internal_file):
+            print(f"Internal file not found: {internal_file}")
+            continue
 
         token_df = process_erc20_txs(token_file, prices_dict).copy()
         internal_df = process_internal_txs(internal_file).copy()
