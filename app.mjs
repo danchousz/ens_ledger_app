@@ -81,6 +81,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
     }
 
     let flowData = {};
+    let categoryToNames = {};
 
     let categoryMode = true;
 
@@ -150,20 +151,20 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
     let daoWalletZoneCat = 0.125;
     let daoWalletZoneRecipientsCat = 0;
 
-    let ecosystemZoneCat = 0.27;
+    let ecosystemZoneCat = 0.35;
     let ecosystemZoneRecipientsCat, ecosystemZoneSendersCat = ecosystemZoneCat;
     let zoneSendersList = [];
 
-    let publicGoodsZoneCat = 0.51;
+    let publicGoodsZoneCat = 0.58;
     let publicGoodsZoneRecipientsCat, publicGoodsZoneSendersCat = publicGoodsZoneCat;
 
-    let metagovZoneCat = 0.67;
+    let metagovZoneCat = 0.75;
     let metagovZoneRecipientCat, metagovZoneSendersCat = metagovZoneCat;
 
-    let communityWGZoneCat = 0.74;
+    let communityWGZoneCat = 0.88;
     let communityWGZoneRecipientsCat = communityWGZoneCat;
 
-    let spsZoneCat = 0.83;
+    let spsZoneCat = 0.92;
     let spsZoneRecipientsCat, spsZoneSendersCat = spsZoneCat;
 
     // In quarterly display:
@@ -1741,7 +1742,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             }
                             nodeX.push(startPoint + quarterNumber -  2.5*border);
                             if (hideMode) {
-                                nodeY.push(daoWalletZoneRecipientsCat += 0.0075);
+                                nodeY.push(daoWalletZoneRecipientsCat += 0.03);
                             } else {
                                 nodeY.push(daoWalletZoneRecipientsCat += 0.01);
                             }
@@ -1829,7 +1830,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             }
                             nodeX.push(startPoint + quarterNumber -  2.5*border);
                             if (hideMode) {
-                                nodeY.push(daoWalletZoneRecipientsCat += 0.0075);
+                                nodeY.push(daoWalletZoneRecipientsCat += 0.03);
                             } else {
                                 nodeY.push(daoWalletZoneRecipientsCat += 0.01);
                             }
@@ -1921,12 +1922,16 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             }
                             nodeX.push(startPoint + quarterNumber -  2.5*border);
                             if (hideMode) {
-                                nodeY.push(daoWalletZoneRecipientsCat += 0.0075);
+                                nodeY.push(daoWalletZoneRecipientsCat += 0.03);
                             } else {
                                 nodeY.push(daoWalletZoneRecipientsCat += 0.01);
                             }
                             ecosystemZoneRecipientsCat = ecosystemZoneCat;
                             ecosystemZoneSendersCat = ecosystemZoneCat;
+                        } else if (nodeName.startsWith('Dissolution')) {
+                            nodeX.push(startPoint - 3.5*border);;
+                            nodeY.push(communityWGZoneCat);
+                            interCatFlag = true;
                         } else if (nodeName.startsWith('Ecosystem')) {
                             nodeX.push(startPoint + (quarterNumber/2.5));
                             nodeY.push(ecosystemZoneCat);
@@ -1986,10 +1991,6 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                                 nodeY.push(metagovZoneRecipientCat += 0.01);
                             }
                             interSenderFlag = true;
-                        } else if (nodeName.startsWith('Dissolution')) {
-                            nodeX.push(startPoint);;
-                            nodeY.push(communityWGZoneCat);
-                            interCatFlag = true;
                         } else if (sender.startsWith('Community WG')) {
                             if (interCatFlag) {
                                 communityWGZoneRecipientsCat += 0.02;
@@ -2021,7 +2022,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             }
                             nodeX.push(startPoint + quarterNumber -  2.5*border);
                             if (hideMode) {
-                                nodeY.push(daoWalletZoneRecipientsCat += 0.0075);
+                                nodeY.push(daoWalletZoneRecipientsCat += 0.03);
                             } else {
                                 nodeY.push(daoWalletZoneRecipientsCat += 0.01);
                             }
@@ -2124,7 +2125,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             }
                             nodeX.push(startPoint + quarterNumber -  2.5*border);
                             if (hideMode) {
-                                nodeY.push(daoWalletZoneRecipientsCat += 0.0075);
+                                nodeY.push(daoWalletZoneRecipientsCat += 0.03);
                             } else {
                                 nodeY.push(daoWalletZoneRecipientsCat += 0.01);
                             }
@@ -2160,7 +2161,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             nodeY.push(ecosystemZoneSendersCat += 0.01)
                             zoneSendersList.push(nodeName);
                         } else if (nodeName.startsWith('Public Goods')) {
-                            nodeX.push(startPoint + (quarterNumber/3));
+                            nodeX.push(startPoint + (quarterNumber/2.5));
                             nodeY.push(publicGoodsZoneCat);
                             interCatFlag = true;
                         } else if (sender.startsWith('Public Goods')) {
@@ -2233,7 +2234,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             }
                             nodeX.push(startPoint + quarterNumber -  2.5*border);
                             if (hideMode) {
-                                nodeY.push(daoWalletZoneRecipientsCat += 0.0075);
+                                nodeY.push(daoWalletZoneRecipientsCat += 0.03);
                             } else {
                                 nodeY.push(daoWalletZoneRecipientsCat += 0.01);
                             }
@@ -2343,7 +2344,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             }
                             nodeX.push(startPoint + quarterNumber -  2.5*border);
                             if (hideMode) {
-                                nodeY.push(daoWalletZoneRecipientsCat += 0.0075);
+                                nodeY.push(daoWalletZoneRecipientsCat += 0.03);
                             } else {
                                 nodeY.push(daoWalletZoneRecipientsCat += 0.01);
                             }
@@ -2453,7 +2454,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             }
                             nodeX.push(startPoint + quarterNumber -  2.5*border);
                             if (hideMode) {
-                                nodeY.push(daoWalletZoneRecipientsCat += 0.0075);
+                                nodeY.push(daoWalletZoneRecipientsCat += 0.025);
                             } else {
                                 nodeY.push(daoWalletZoneRecipientsCat += 0.03);
                             }
@@ -2563,7 +2564,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             }
                             nodeX.push(startPoint + quarterNumber -  2.5*border);
                             if (hideMode) {
-                                nodeY.push(daoWalletZoneRecipientsCat += 0.0075);
+                                nodeY.push(daoWalletZoneRecipientsCat += 0.03);
                             } else {
                                 nodeY.push(daoWalletZoneRecipientsCat += 0.01);
                             }
@@ -2688,7 +2689,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             }
                             nodeX.push(startPoint + quarterNumber -  2.5*border);
                             if (hideMode) {
-                                nodeY.push(daoWalletZoneRecipientsCat += 0.0075);
+                                nodeY.push(daoWalletZoneRecipientsCat += 0.03);
                             } else {
                                 nodeY.push(daoWalletZoneRecipientsCat += 0.01);
                             }
@@ -2756,7 +2757,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             interCatFlag = true;
                         } else if (sender.startsWith('Metagov')) {
                             if (interCatFlag) {
-                                metagovZoneRecipientCat += 0.02;
+                                metagovZoneRecipientCat += 0.05;
                                 interCatFlag = false;
                             }
                             nodeX.push(startPoint + quarterNumber -  2.5*border);
@@ -2813,7 +2814,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             }
                             nodeX.push(startPoint + quarterNumber -  2.5*border);
                             if (hideMode) {
-                                nodeY.push(daoWalletZoneRecipientsCat += 0.0075);
+                                nodeY.push(daoWalletZoneRecipientsCat += 0.03);
                             } else {
                                 nodeY.push(daoWalletZoneRecipientsCat += 0.01);
                             }
@@ -2883,12 +2884,12 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                             if (hideMode) {
                                 if (interCatFlag) {
                                     metagovZoneRecipientCat += 0.04;
-                                    nodeX.push(startPoint + quarterNumber -  3.5*border);
+                                    nodeX.push(startPoint + quarterNumber -  2.5*border);
                                     nodeY.push(metagovZoneRecipientCat += 0.01);
                                     metagovZoneRecipientCat += 0.03;
                                     interCatFlag = false;
                                 } else {
-                                    nodeX.push(startPoint + quarterNumber -  3.5*border);
+                                    nodeX.push(startPoint + quarterNumber -  2.5*border);
                                     nodeY.push(metagovZoneRecipientCat += 0.0125);
                                 }
                             } else {
@@ -2896,7 +2897,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                                     metagovZoneRecipientCat += 0.02;
                                     interCatFlag = false;
                                 }
-                                nodeX.push(startPoint + quarterNumber -  3.5*border);
+                                nodeX.push(startPoint + quarterNumber -  2.5*border);
                                 nodeY.push(metagovZoneRecipientCat += 0.01);
                             }
                             spsZoneRecipientsCat = spsZoneCat;
@@ -3288,7 +3289,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
         }
         
         if (quarter) {
-            if (nodeName.includes('Registrar')) {
+            if (nodeName.includes('Registrar') || sender === 'Dissolution') {
                 return -1;
             }
             if (!nodeIndices[nodeName]) {
@@ -4434,6 +4435,13 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
     };
 
     df.forEach(row => {
+        if (!categoryToNames[row.To_category]) {
+            categoryToNames[row.To_category] = new Set();
+        }
+        categoryToNames[row.To_category].add(row.To_name);
+    });
+
+    df.forEach(row => {
         const dollarValue = Math.round(row.DOT_USD, 0);
         const formattedDollarValue = dollarValue.toLocaleString('en-US') + '$';
 
@@ -4452,7 +4460,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
             : row['Transaction Hash']) 
         : row['Transaction Hash'];
 
-        const color = bigPicture && (row['From_name'] === 'DAO Wallet' || row['To_name'] === 'DAO Wallet') && (hideMode) 
+        const color = bigPicture && (row['To_name'] === 'DAO Wallet' || row['To_name'] === 'Endowment') && (hideMode) 
         ? colorHideModeMap[row.Symbol] 
         : colorMap[row.Symbol];
 
@@ -4488,7 +4496,7 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                 const specialWallets = ['Ecosystem', 'Public Goods', 'Metagov', 'Community WG', 'Providers'];
 
                 const value = (hideMode 
-                ? (row['From_name'] == 'DAO Wallet' 
+                ? (row['To_name'] === 'DAO Wallet'
                     ? Math.log(dollarValue) 
                     : row['From_name'] == 'DAO Wallet' && (row['Transaction Hash'] == 'Interquarter' || isSpecialReceipt)  
                         ? Math.log(dollarValue) 
@@ -4498,11 +4506,13 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
                                 ? Math.log(dollarValue) 
                                 : row['From_name'] == 'New Registrar' 
                                     ? Math.log(dollarValue) 
-                                    : row['To_name'] == 'Endowment' ? Math.log(dollarValue) 
+                                    : row['To_name'] == 'Endowment' 
+                                        ? Math.log(dollarValue) 
                                         : row['From_name'] !== 'Plchld' 
-                                        ? dollarValue : 1) 
+                                            ? dollarValue : 1) 
                 : row['From_name'] !== 'Plchld' ? dollarValue : 1)
-    
+
+
                 const qtr = row['From_name'] !== 'Plchld' 
                 ? row.Quarter 
                 : 'Plchld';
@@ -4516,6 +4526,10 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
 
                 if (specialWallets.includes(sender) && !(specialWallets.includes(receiver))) {
                     receiverNodeName = `${receiver} (${nextQuarter})${sender.substring(0, 2)}`;
+                }
+
+                if (sender === 'Dissolution') {
+                    receiverNodeName = "Community SG (2022Q3)Ec"
                 }
                 const senderIndex = getNodeIndex(senderNodeName, sender, receiver, model, qtr);
                 const receiverIndex = getNodeIndex(receiverNodeName, sender, receiver, model, nextQuarter);
@@ -4604,17 +4618,20 @@ function createSankeyData(df, bigPicture = false, quarter = null, walletFilter, 
     };
     safeYAxisImport.push(nodeY);
     const maxY = Math.max(...safeYAxisImport[0])  
+
     
     return {
         nodes: nodes.map((node, index) => {
             let nodeName = node.startsWith('Unspent_') ? 'Unspent' : node.split(' (')[0];
             const bpNodeName = node;
+            const toNames = categoryToNames[nodeName] ? Array.from(categoryToNames[nodeName]) : [];
             return { 
                 name: nodeName, 
                 customdata: { 
                     account: nodeCustomdata[index],
                     bpIndex: bpNodeName,
                     sender: nodeSenderSafeExport[index],
+                    toNames: toNames
                 },
                 color: nodeColors[index], 
                 x: nodeX[index], 
@@ -4682,12 +4699,12 @@ app.get('/data/big_picture', (req, res) => {
 
         modifiedDf = modifiedDf.map(row => {
             if (row['Transaction Hash'] === 'Unspent') {
-                if (row.Quarter === '2022Q3' && row.From_name === 'Community WG') {
+                if (row.Quarter === '2022Q2' && row.From_name === 'Community WG') {
                     return {
                         ...row,
                         'Transaction Hash': 'Interquarter',
-                        To_name : 'Ecosystem',
-                        To_category : 'Ecosystem'
+                        To_name : 'Dissolution',
+                        To_category : 'Dissolution'
                     }
                 } else {
                     return {
@@ -4771,6 +4788,105 @@ app.get('/data/:quarter/:wallet', (req, res) => {
     }
 });
 
+app.get('/category-sankey-data/:category/:quarter', (req, res) => {
+    const category = req.params.category;
+    const quarter = req.params.quarter;
+
+    const filteredData = df.filter(row =>
+        row.Quarter === quarter &&
+        row.To_category === category
+    );
+
+    const nodes = new Set();
+    nodes.add(category);
+
+    // Группируем данные по получателям, но сохраняем отдельные транзакции
+    const groupedData = filteredData.reduce((acc, row) => {
+        if (!acc[row.To_name]) {
+            acc[row.To_name] = {
+                totalValue: 0,
+                transactions: []
+            };
+        }
+        acc[row.To_name].totalValue += parseFloat(row.DOT_USD);
+        acc[row.To_name].transactions.push(row);
+        nodes.add(row.To_name);
+        return acc;
+    }, {});
+
+    const totalValue = Object.values(groupedData).reduce((sum, group) => sum + group.totalValue, 0);
+
+    const links = [];
+    Object.entries(groupedData).forEach(([toName, data]) => {
+        data.transactions.forEach(tx => {
+            links.push({
+                source: category,
+                target: toName,
+                value: parseFloat(tx.DOT_USD),
+                customdata: {
+                    date: tx.Date,
+                    from: category,
+                    to: toName,
+                    value: tx.Value,
+                    symbol: tx.Symbol,
+                    usd: Math.round(tx.DOT_USD),
+                    receipt: tx['Transaction Hash']
+                }
+            });
+        });
+    });
+
+    const colorMap = {
+        'USDC': '#5294e2',
+        'ETH': '#b97cf3',
+        'ENS': '#5ac8fa'
+    };
+
+    const sankeyData = [{
+        type: "sankey",
+        orientation: "h",
+        arrangement: "fixed",
+        node: {
+            pad: 15,
+            thickness: 30,
+            line: {
+                color: "grey",
+                width: 0.5
+            },
+            label: Array.from(nodes).map((node, index) => {
+                if (index === 0) return node;
+                const nodeValue = groupedData[node].totalValue;
+                const percentage = ((nodeValue / totalValue) * 100).toFixed(1);
+                return `${percentage}% - ${node}`;
+            }),
+            color: Array.from(nodes).map((node, index) => 
+                'white'
+            ),
+            customdata: Array.from(nodes).map(node => ({ 
+                account: node === category ? "N/A" : "recipient",
+                totalValue: node === category ? totalValue : groupedData[node].totalValue
+            })),
+            hovertemplate: '%{label}<br>Total Value: %{customdata.totalValue:.2f} USD<extra></extra>',
+        },
+        link: {
+            source: links.map(link => Array.from(nodes).indexOf(link.source)),
+            target: links.map(link => Array.from(nodes).indexOf(link.target)),
+            value: links.map(link => link.value),
+            color: links.map(link => colorMap[link.customdata.symbol] || 'grey'),
+            customdata: links.map(link => link.customdata),
+            hovertemplate: 'To %{customdata.to}<br>Amount: %{customdata.value} %{customdata.symbol}<br>USD: %{customdata.usd}<extra></extra>',
+            hoverlabel: {align: "left", bordercolor: "white", bgcolor: "white", font: {color: "black", size: 14, family: "Satoshi"}},
+        }
+    }];
+
+    const layout = {
+        paper_bgcolor: 'white',
+        plot_bgcolor: 'white',
+    };
+
+    res.json({ data: sankeyData, layout: layout });
+});
+
 app.get('/export-data', (req, res) => {
     const view = req.query.view;
     const filter = req.query.filter;
@@ -4812,8 +4928,10 @@ app.get('/recipient_details/:recipient', (req, res) => {
     };
 
     transactions.forEach(tx => {
-        summary[tx.Symbol] = (summary[tx.Symbol] || 0) + parseFloat(tx.Value);
-        summary.total_usd += parseFloat(tx.DOT_USD);
+        summary[tx.Symbol] = summary[tx.Symbol] !== 'ETH'
+        ? (summary[tx.Symbol] || 0) + Math.round(parseFloat(tx.Value))
+        : (summary[tx.Symbol] || 0) + (parseFloat(tx.Value));
+        summary.total_usd += Math.round(parseFloat(tx.DOT_USD));
     });
 
     res.json({
@@ -4952,7 +5070,7 @@ app.get('/contractors/:category', (req, res) => {
 
     const result = Object.entries(contractorsData).map(([name, value]) => ({
         name,
-        value: Math.round(value) // Round to whole number
+        value: Math.round(value)
     }));
 
     result.sort((a, b) => b.value - a.value);
